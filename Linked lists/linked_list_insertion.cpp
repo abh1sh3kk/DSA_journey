@@ -84,6 +84,7 @@ void Node::pop(int given_data)
     }
     else
     {
+        Node *node_to_free;
         Node *traveller = start;
         while (traveller->next->data != given_data)
         {
@@ -91,8 +92,10 @@ void Node::pop(int given_data)
                 return;
             traveller = traveller->next;
         }
+        node_to_free = traveller->next;
         traveller->next = traveller->next->next;
-        std::cout << given_data << " was deleted successfully." << std::endl;
+        free(node_to_free);
+        std::cout << given_data << " was deleted successfully and memory was deallocated." << std::endl;
     }
 }
 int main()
