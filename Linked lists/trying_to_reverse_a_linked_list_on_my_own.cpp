@@ -114,7 +114,7 @@ int main()
 	n1.display();
 	n1.reverse_list();
 	std::cout << std::endl << std::endl;
-	std::cout << "After reversing... " << endl << endl;
+	std::cout << "After reversing... " << endl <<endl;
 	n1.display();
 	return 0;
 }
