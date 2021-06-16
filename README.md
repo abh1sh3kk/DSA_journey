@@ -1,0 +1,3 @@
+# Data Structures and Algorithms
+
+Basic repository that stores my practice programs... 
