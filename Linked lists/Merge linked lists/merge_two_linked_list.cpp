@@ -17,49 +17,7 @@ public:
 	// void merge(Node, Node);
 	void merge(Node n1, Node n2);
 	void set_head(Node *head);
-	Node mergesort(Node n1, Node n2);
 };
-Node Node::mergesort(Node n1, Node n2)
-{
-	Node n3;
-
-	if (!(n1.isEmpty()) && !(n2.isEmpty()))
-	{
-		Node *traveller1 = n1.head;
-		Node *traveller2 = n2.head;
-		Node *traveller3 = n3.head;
-
-		while (traveller1 != NULL && traveller2 != NULL)
-		{
-			if (traveller1->data <= traveller2->data)
-			{
-				n3.push(traveller1->data);
-				traveller1 = traveller1->next;
-			}
-			else
-			{
-				n3.push(traveller2->data);
-				traveller2 = traveller2->next;
-			}
-		}
-		while (traveller1 != NULL)
-		{
-			n3.push(traveller1->data);
-			traveller1 = traveller1->next;
-		}
-		while (traveller2 != NULL)
-		{
-			n3.push(traveller2->data);
-			traveller2 = traveller2->next;
-		}
-		return n3;
-	}
-	else
-	{
-		cout << "Can't merge null list" << endl;
-		exit(0);
-	}
-}
 void Node::merge(Node n1, Node n2)
 {
 	if (n1.isEmpty() || n2.isEmpty())
@@ -68,12 +26,12 @@ void Node::merge(Node n1, Node n2)
 		exit(0);
 	}
 
-	// traveller is a temporary variable who traverse the list..
+	// traveller is a temporary variable who traverse the list.. 
 	Node *traveller = n1.head;
-
-	while (traveller->next != NULL)
+	
+	while(traveller->next != NULL)
 	{
-		traveller = traveller->next; // if the nodes aren't empty...
+		traveller = traveller->next;  // if the nodes aren't empty...
 	}
 
 	//head of n2 is joined with tail of n1
@@ -156,23 +114,19 @@ void Node::display()
 }
 int main()
 {
-	Node n1, n2, n3;
+	Node n1, n2;
 
 	for (int i = 1; i <= 5; i++)
-	{
-		n1.push(2 * i);
-	}
+		n1.push(i);
 	for (int i = 1; i <= 5; i++)
-	{
-		n2.push(2 * i + 1);
-	}
+		n2.push(i * 2);
 
 	n1.display();
 	n2.display();
 
-	n3 = n3.mergesort(n1, n2);
+	n1.merge(n1, n2);
+	n1.display();
 
-	n3.display();
 
 	return 0;
 }
