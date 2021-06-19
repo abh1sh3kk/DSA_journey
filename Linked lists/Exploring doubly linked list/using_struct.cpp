@@ -8,22 +8,20 @@ typedef struct Node
 	Node *next;
 }Node;
 
-void append(int given_data);
-void display();
+void append(Node **head, int given_data);
+void display(Node *head);
 Node* createNode(int given_data);
-
-Node *head = NULL;
 
 int main()
 {
-	Node n1;
+	Node *head = NULL;
 
-	append(5);
-	append(6);
-	append(7);
-	append(8);
+	append(&head, 5);
+	append(&head, 6);
+	append(&head, 7);
+	append(&head, 8);
 	
-	display();
+	display(head);
 
 	return 0;
 }
@@ -37,7 +35,7 @@ Node* createNode(int given_data)
 
 	return new_node;
 }
-void display()
+void display(Node* head)
 {
 	Node *traveller = head;
 
@@ -47,18 +45,18 @@ void display()
 		traveller = traveller->next;
 	}
 }
-void append(int given_data)
+void append(Node **head, int given_data)
 {
 
 	Node *new_node = createNode(given_data);
 
-	if (head == NULL)
+	if (*head == NULL)
 	{
-		head = new_node;
+		*head = new_node;
 		return;
 	}
 
-	Node *traveller = head;
+	Node *traveller = *head;
 	while (traveller->next != NULL)
 	{
 		traveller = traveller->next;
