@@ -8,9 +8,6 @@ class Node
 public:
 	Node *head = NULL;
 	void push(int);
-	// void append(int);
-	// void insertAfter(int, int);
-	// void delete (int);
 	bool isEmpty();
 	Node *createNode(int);
 	void display();
