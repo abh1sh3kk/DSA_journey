@@ -1,22 +1,21 @@
 #include <iostream>
 using namespace std;
 
-
 typedef struct Node
 {
 	int data;
 	Node *left;
 	Node *right;
-}Node;
+} Node;
 
 Node *createNode(int given_data);
 void insert(Node **root, int given_data);
 void printInOrder(Node *root);
-
+bool containsData(Node *root, int given_data);
 
 int main()
 {
-	Node* root = NULL;
+	Node *root = NULL;
 
 	insert(&root, 10);
 	insert(&root, 45);
@@ -25,9 +24,34 @@ int main()
 	insert(&root, 8);
 	insert(&root, 2);
 
-	printInOrder(root);
-	
+	// printInOrder(root);
+	cout << containsData(root, 99) << endl;
+
 	return 0;
+}
+bool containsData(Node *root, int given_data)
+{
+
+
+	// if root reaches end or the tree is empty return false
+	if (root == NULL)
+		return false;
+
+
+	// if the data is found return true
+	if (given_data == root->data)
+		return true;
+
+
+	// self explanatory
+	if (given_data < root->data)
+		return (containsData(root->left, given_data));
+		
+
+	// if given data is more than root->data
+	else
+		return (containsData(root->right, given_data));
+
 }
 void printInOrder(Node *root)
 {
@@ -37,7 +61,7 @@ void printInOrder(Node *root)
 	cout << root->data << " ";
 	printInOrder(root->right);
 }
-void insert(Node** root, int given_data)
+void insert(Node **root, int given_data)
 {
 	if (*root == NULL)
 	{
