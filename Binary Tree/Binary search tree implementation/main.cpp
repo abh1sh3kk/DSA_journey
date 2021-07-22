@@ -32,17 +32,17 @@ int main()
 
 		switch(choice){
 			case 1:
-			cout << "Fine, enter the data: ";
+			cout << "Enter the data to insert: ";
 			cin >> data;
 			insert(&root, data);
 			cout << "Insertion successful" << endl;
 			break;
 
 			case 2:
-			cout << "Which number do you want? ";
+			cout << "Enter the number to search: ";
 			cin >> data;
 			if (searchData(root, data))
-				cout << "Congratulations, " << data << " found." << endl;
+				cout << "Congratulations, " << data << " was found." << endl;
 			else
 				cout << "Sorry!! " << data << " was not found." << endl;
 			break;
@@ -78,7 +78,7 @@ int menu(void)
 	cout << "1. Insert data." << endl;
 	cout << "2. Search for a data." << endl;
 	cout << "3. Remove a data." << endl;
-	cout << "4. Display the data." << endl;
+	cout << "4. Display the data(Post-order)." << endl;
 	cout << "5. Exit" << endl;
 
 
